@@ -1,31 +1,31 @@
 // pages/notes/new.js
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function NewNote() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     if (!title.trim() || !content.trim()) {
-      setError('Both title and content are required');
+      setError("Both title and content are required");
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch('/api/notes', {
-        method: 'POST',
+      const res = await fetch("/api/notes", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ title, content }),
       });
@@ -33,12 +33,12 @@ export default function NewNote() {
       const data = await res.json();
 
       if (data.success) {
-        router.push('/');
+        router.push("/");
       } else {
-        setError(data.error || 'Failed to create note');
+        setError(data.error || "Failed to create note");
       }
     } catch (error) {
-      setError('An error occurred while creating the note');
+      setError("An error occurred while creating the note");
     } finally {
       setLoading(false);
     }
@@ -48,15 +48,14 @@ export default function NewNote() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link 
-            href="/"
-            className="text-blue-600 hover:text-blue-700"
-          >
+          <Link href="/" className="text-blue-600 hover:text-blue-700">
             ← Back to Notes
           </Link>
         </div>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Create New Note</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-5">
+          Create New Note
+        </h1>
 
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
@@ -64,9 +63,15 @@ export default function NewNote() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white border rounded-lg shadow-md py-3 px-6"
+        >
           <div className="mb-6">
-            <label htmlFor="title" className="block text-gray-700 font-semibold mb-2">
+            <label
+              htmlFor="title"
+              className="block text-gray-700 font-semibold mb-2"
+            >
               Title
             </label>
             <input
@@ -74,14 +79,17 @@ export default function NewNote() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="text-stone-700 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Enter note title"
               disabled={loading}
             />
           </div>
 
           <div className="mb-6">
-            <label htmlFor="content" className="block text-gray-700 font-semibold mb-2">
+            <label
+              htmlFor="content"
+              className="block text-gray-700 font-semibold mb-2"
+            >
               Content
             </label>
             <textarea
@@ -89,7 +97,7 @@ export default function NewNote() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows="10"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 resize-vertical"
+              className="text-stone-700 w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 resize-vertical"
               placeholder="Enter note content"
               disabled={loading}
             />
@@ -99,13 +107,13 @@ export default function NewNote() {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-3xl hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              {loading ? 'Creating...' : 'Create Note'}
+              {loading ? "Creating..." : "Create Note"}
             </button>
             <Link
               href="/"
-              className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition text-center"
+              className="px-6 py-3 border border-gray-300 rounded-4xl bg-red-400 hover:bg-red-500 font-semibold transition-all"
             >
               Cancel
             </Link>
