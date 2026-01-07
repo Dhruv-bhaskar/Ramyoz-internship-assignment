@@ -78,7 +78,7 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div className="flex sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3">
               <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-3 rounded-2xl shadow-lg">
                 <svg
@@ -107,7 +107,7 @@ export default function Home() {
 
             <Link
               href="/notes/new"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 flex items-center gap-2 font-semibold text-sm"
+              className="hidden sm:flex bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 flex items-center gap-2 font-semibold text-sm"
             >
               <svg
                 className="w-5 h-5"
@@ -244,7 +244,7 @@ export default function Home() {
               {!searchQuery && (
                 <Link
                   href="/notes/new"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 font-semibold"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 font-semibold"
                 >
                   <svg
                     className="w-5 h-5"
