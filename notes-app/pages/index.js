@@ -107,7 +107,7 @@ export default function Home() {
 
             <Link
               href="/notes/new"
-              className="hidden sm:flex bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 flex items-center gap-2 font-semibold text-sm"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-5 py-2.5 rounded-xl hover:shadow-lg hover:shadow-indigo-200 transform hover:scale-105 transition-all duration-200 flex items-center gap-2 font-semibold text-sm"
             >
               <svg
                 className="w-5 h-5"
@@ -122,7 +122,7 @@ export default function Home() {
                   d="M12 4v16m8-8H4"
                 />
               </svg>
-              Create Note
+              <p className="hidden sm:block">Create Note</p>
             </Link>
           </div>
         </div>
